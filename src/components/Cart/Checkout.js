@@ -22,9 +22,9 @@ const Checkout = (props) => {
     event.preventDefault();
 
     const enteredName = nameInputRef.current.value;
-    const enteredStreet = nameInputRef.current.value;
-    const enteredPostalCode = nameInputRef.current.value;
-    const enteredCity = nameInputRef.current.value;
+    const enteredStreet = streetInputRef.current.value;
+    const enteredPostalCode = postalCodeInputRef.current.value;
+    const enteredCity = cityInputRef.current.value;
 
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredStreetIsValid = !isEmpty(enteredStreet);
@@ -48,7 +48,12 @@ const Checkout = (props) => {
       return;
     }
 
-    // Submit cart data
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode,
+    });
   };
 
   const nameControlClasses = `${classes.control} ${
